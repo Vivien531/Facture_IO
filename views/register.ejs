@@ -1,0 +1,37 @@
+<%- include('./partials/disconnectedNavbar'); %>
+
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body">
+          <img class="mx-auto mb-4" style="width:60%;" src="/src/logo/logo.svg">
+
+          <form action="/users/register" method="POST">
+            <div class="form-group">
+              <input type="lname" id="lastName" name="lastName" class="form-control" placeholder="Nom" value="<%= typeof lastName != 'undefined' ? lastName : '' %>"/>
+            </div>
+            <div class="form-group">
+              <input type="fname" id="firstName" name="firstName" class="form-control" placeholder="Prénom" value="<%= typeof firstName != 'undefined' ? firstName : '' %>"/>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+            </div>
+            <div class="form-group">
+              <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" value="<%= typeof password != 'undefined' ? password : '' %>"/>
+            </div>
+            <div class="form-group">
+              <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirmer le Mot de passe" value="<%= typeof password2 != 'undefined' ? password2 : '' %>"/>
+            </div>
+            <div class="col-12" style="text-align: center;">
+              <button type="submit" class="btn btn-primary">Créer mon compte</button>
+            </div>
+          </form>
+          <p class="lead mt-4">Vous avez déjà un compte?
+            <a style="color:#2C75FF;" href="/users/login">Connectez vous</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/messages') %>

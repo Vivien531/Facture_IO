@@ -1,0 +1,102 @@
+<%- include('./partials/navbar'); %>
+<input id="url" type="hidden" name="url" value="/app/deleteClient/<%= _client._id  %>">
+<div class="col-md-8 mb-3 mt-2 mt-md-5 mx-auto">
+    <div class="card card-body">
+        <form action="/app/updateClient" method="POST" class="d-none d-md-block updateClientForm">
+          <input type="hidden" name="_id" value="<%= _client._id %>"/>
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="name" id="name" name="name" class="form-control" placeholder="Nom" required="required" value="<%= typeof _client != 'undefined' ? _client.name : '' %>"/>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="phone">Téléphone</label>
+              <input type="text" id="phone" name="phone" class="form-control" minlength="10" maxlength="10" placeholder="Téléphone" value="<%= typeof _client != 'undefined' ? _client.phone : '' %>"/>
+            </div>
+            <div class="form-group col">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof _client != 'undefined' ? _client.email : '' %>"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <label for="cp">Code Postal</label>
+              <input type="number" id="cp" name="cp" class="form-control" placeholder="Code Postal" minlength="5" maxlength="5" required="required" value="<%= typeof _client != 'undefined' ? _client.cp : '' %>"/>
+            </div>
+            <div class="form-group col">
+              <label for="city">Ville</label>
+              <input type="text" id="city" name="city" class="form-control" placeholder="Ville" required="required" value="<%= typeof _client != 'undefined' ? _client.city : '' %>"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Adresse</label>
+            <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" required="required" value="<%= typeof _client != 'undefined' ? _client.address : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="addressBis">Complément d'adresse</label>
+            <input type="text" id="addressBis" name="addressBis" class="form-control" placeholder="Complément d'adresse" value="<%= typeof _client != 'undefined' ? _client.addressBis : '' %>"/>
+          </div>
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary mx-1">Valider
+              <i class="fas fa-check ml-1"></i>
+            </button>
+            <a href="/app/client/<%= _client._id  %>" type="button" class="btn btn-primary mx-1">Annuler
+              <i class="fas fa-undo ml-1"></i>
+            </a>
+          </div>
+          <div class="text-center mt-3">
+            <a href="/app/deleteClient/<%= _client._id  %>" type="button" class="btn btn-danger deleteBtn">Supprimer le client
+              <i class="fas fa-user-times ml-1"></i>
+            </a>
+          </div>
+        </form>
+        <form action="/app/updateClient" method="POST" class="d-block d-md-none updateClientForm">
+          <input type="hidden" name="_id" value="<%= _client._id %>"/>
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="name" id="name" name="name" class="form-control" placeholder="Nom" required="required" value="<%= typeof _client != 'undefined' ? _client.name : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="cp">Code Postal</label>
+            <input type="number" id="cp" name="cp" class="form-control" placeholder="Code Postal" minlength="5" maxlength="5" required="required" value="<%= typeof _client != 'undefined' ? _client.cp : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <input type="text" id="city" name="city" class="form-control" placeholder="Ville" required="required" value="<%= typeof _client != 'undefined' ? _client.city : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="address">Adresse</label>
+            <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" required="required" value="<%= typeof _client != 'undefined' ? _client.address : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="addressBis">Complément d'adresse</label>
+            <input type="text" id="addressBis" name="addressBis" class="form-control" placeholder="Complément d'adresse" value="<%= typeof _client != 'undefined' ? _client.addressBis : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input type="text" id="phone" name="phone" class="form-control" minlength="10" maxlength="10" placeholder="Téléphone" value="<%= typeof _client != 'undefined' ? _client.phone : '' %>"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof _client != 'undefined' ? _client.email : '' %>"/>
+          </div>
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary mx-1">Valider
+              <i class="fas fa-check ml-1"></i>
+            </button>
+            <a href="/app/client/<%= _client._id  %>" type="button" class="btn btn-primary mx-1">Annuler
+              <i class="fas fa-undo ml-1"></i>
+            </a>
+          </div>
+          <div class="text-center mt-3">
+            <a href="/app/deleteClient/<%= _client._id  %>" type="button" class="btn btn-danger deleteBtn">Supprimer le client
+              <i class="fas fa-user-times ml-1"></i>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <%- include('./partials/messages') %>
+
+    <script src="/js/updateClient.js" charset="utf-8"></script>

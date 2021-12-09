@@ -1,0 +1,77 @@
+<% if(typeof errors != 'undefined'){ %>
+  <% errors.forEach(function(error) { %>
+    <script type="text/javascript">
+      $.notify({
+        icon: "ni ni-bell-55",
+        message: "<%= error.msg %>"
+      }, {
+        type: 'warning',
+        timer: 4000,
+        placement: {
+          from: 'bottom',
+          align: 'right'
+        },
+        animate: {
+          enter: 'animated fadeInDown',
+          exit: 'animated fadeOutUp'
+        }
+      });
+    </script>
+    <% }); %><% } %>
+    <% if(success_msg != ''){ %>
+      <script type="text/javascript">
+        $.notify({
+          icon: "ni ni-bell-55",
+          message: "<%= success_msg %>"
+        }, {
+          type: 'success',
+          timer: 4000,
+          placement: {
+            from: 'bottom',
+            align: 'right'
+          },
+          animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+          }
+        });
+      </script>
+    <% } %>
+    <% if(error_msg != ''){ %>
+      <script type="text/javascript">
+        $.notify({
+          icon: "ni ni-bell-55",
+          message: "<%= error_msg %>"
+        }, {
+          type: 'danger',
+          timer: 4000,
+          placement: {
+            from: 'bottom',
+            align: 'right'
+          },
+          animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+          }
+        });
+      </script>
+    <% } %>
+    <% if(error != ''){ %>
+      <script type="text/javascript">
+        $.notify({
+          icon: "ni ni-bell-55",
+          message: "<%= error %>"
+        }, {
+          type: 'primary',
+          timer: 4000,
+          placement: {
+            from: 'bottom',
+            align: 'right'
+          },
+          animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+          }
+        });
+      </script>
+    <% } %>

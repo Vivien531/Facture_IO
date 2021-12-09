@@ -1,0 +1,71 @@
+<%- include('./partials/navbar'); %>
+
+  <div class="card col-12 col-md-11 mx-auto">
+    <div class="card-header bg-transparent">
+      <h4 class="text-uppercase text-center ls-1 py-1 mb-0">Devis</h4>
+    </div>
+    <div class="card-body" style="padding-left:0;padding-right:0;">
+      <!-- <form class="d-none d-md-block" action="/app/devis/search" method="POST"> <div class="d-flex align-items-center justify-content-center col-12 mb-3 mx-auto"> <div class="input-group col-8"> <input type="text" value="<%= search != 'any' ? search :
+      '' %>" name="devisSearch" class="form-control" placeholder="Recherche" aria-label="Recherche" aria-describedby="Recherche"> <div class="input-group-append"> <button class="btn btn-outline-primary d-inline-block reloadBtn" type="button"> <i class="far
+      fa-times-circle fa-lg align-middle"></i> </button> <button class="btn btn-outline-primary" type="submit" id="Recherche">Rechercher <i class="fas fa-search"></i> </button> </div> </div> </div> </form> <form class="d-block d-md-none"
+      action="/app/devis/search" method="POST"> <div class="row mb-3"> <div class="input-group col"> <input type="text" value="<%= search != 'any' ? search : '' %>" name="devisSearch" class="form-control" placeholder="Recherche" aria-label="Recherche"
+      aria-describedby="Recherche"> <div class="input-group-append"> <button class="btn btn-outline-primary d-inline-block reloadBtn" type="button"> <i class="far fa-times-circle fa-lg align-middle"></i> </button> <button class="btn btn-outline-primary"
+      type="submit" id="Recherche"> <i class="fas fa-search"></i> </button> </div> </div> </div> </form> -->
+
+      <div class="table-responsive" style="min-height: 50vh;">
+        <div>
+          <table class="table align-items-center table-flush" id="datatable-basic">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Client</th>
+                <th class="d-none d-md-table-cell" scope="col">Ville</th>
+                <th scope="col" class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <% devis.forEach(function(devi) { %>
+                <tr id="<%= devi._id %>">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="number mb-0 text-sm">
+                          <span class="badge badge-dot mr-md-4">
+                            <i class="<%= devi.factured === true ? 'bg-success' : 'bg-warning' %>"></i>
+                          </span><%= devi.devisNumber %></span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    <%= devi.name %>
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                    <%= devi.city %>
+                  </td>
+                  <td class="text-right">
+                    <div class="dropdown">
+                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <form class="factureDevisForm" action="/app/devisFactured/<%= devi._id %>" method="GET">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item displayBtn" href="" data-href="display/<%= devi.devisName %>">Afficher le Devis</a>
+                          <a class="dropdown-item printBtn" href="#" data-href="display/<%= devi.devisName %>">Imprimer le Devis</a>
+                          <button class="dropdown-item <%= devi.factured === true ? 'disabled' : '' %>" type="submit">Devis Facturé</button>
+                        </div>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+                <% }) %>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('./partials/messages'); %>
+
+        <script src="/js/devis.js" charset="utf-8"></script>

@@ -1,0 +1,14 @@
+<%- include('./partials/navbar'); %>
+
+  <div class="col-md-8 mb-3 mt-2 mt-md-5 mx-auto">
+    <div class="card card-body text-center">
+        <form action="/users/confirmAccount" method="POST">
+          <div class="form-group">
+            <input type="number" id="code" name="code" class="form-control" placeholder="Code" required="required"/>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Confirmer">
+        </form>
+      </div>
+    </div>
+
+    <%- include('./partials/messages'); %>

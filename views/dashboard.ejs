@@ -1,0 +1,136 @@
+<%- include('./partials/navbar'); %>
+
+  <div class="container-fluid col-12 col-md-10">
+    <div class="card card-profile">
+      <img src="/src/logo/banniere.jpg" alt="bannière" class="card-img-top" style="height:25vh;">
+      <div class="row justify-content-center">
+        <div class="col-lg-3 order-lg-2">
+          <div class="card-profile-image">
+            <a href="#">
+              <img src="/src/logo/logo_small_icon_only_blue.png" class="rounded-circle">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="card-header text-center border-0 pt-6 pt-md-4 pb-0 pb-md-4">
+        <div class="d-none d-md-flex justify-content-between">
+          <div class="block">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle mx-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clients</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app/clients">Afficher les Clients</a>
+                <a class="dropdown-item" href="/app/addClient">Ajouter un Client</a>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle mx-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Prestations</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app/prestations">Afficher les Prestations</a>
+                <a class="dropdown-item" href="/app/addPrestation">Ajouter une Prestation</a>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle mx-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Documents</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app/factures">Afficher les Factures</a>
+                <a class="dropdown-item" href="/app/devis">Afficher les Devis</a>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle mx-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profil</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/users/updateUser">Modifier mon profil</a>
+                <a class="dropdown-item" href="/users/updatePassword">Modifier mon mot de passe</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex d-md-none">
+          <div class="row justify-content-beetween">
+            <div class="btn-group col m-1">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clients</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app/clients">Afficher les Clients</a>
+                <a class="dropdown-item" href="/app/addClient">Ajouter un Client</a>
+              </div>
+            </div>
+            <div class="btn-group col m-1">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Prestations</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app/prestations">Afficher les Prestations</a>
+                <a class="dropdown-item" href="/app/addPrestation">Ajouter une Prestation</a>
+              </div>
+            </div>
+            <div class="btn-group col m-1">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Documents</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app/factures">Afficher les Factures</a>
+                <a class="dropdown-item" href="/app/devis">Afficher les Devis</a>
+              </div>
+            </div>
+            <div class="btn-group col m-1">
+              <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profil</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/users/updateUser">Modifier mon profil</a>
+                <a class="dropdown-item" href="/users/updatePassword">Modifier mon mot de passe</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body pt-0">
+        <div class="text-center">
+          <h5 class="lead">
+            <b><%= user.lastName %>
+              <%= user.firstName %></b>
+          </h5>
+          <% if (typeof user.cp != 'undefined' || typeof user.city != 'undefined' || typeof user.adress != 'undefined') { %>
+            <p class="quote">
+              <%= user.cp %>
+              <%= user.city %>
+              <br>
+              <%= user.address %>
+            </p>
+          <% } %>
+          <p class="quote">
+            <%= user.phone %>
+            <br><%= user.email %>
+          </p>
+          <% if (typeof user.formeJuridique != 'undefined' || typeof user.raisonSociale != 'undefined' || typeof user.identifiantTva != 'undefined') { %>
+            <p class="quote">
+              <%= user.formeJuridique %>
+              <%= user.raisonSociale %>
+              <br>
+              <%= user.identifiantTva %>
+            </p>
+          <% } %>
+        </div>
+        <% if (user.confirmed == false) { %>
+          <div class="row">
+            <button href="/users/confirmAccount" onclick="window.location.href='/users/confirmAccount'" class="btn btn-primary col col-md-7 mx-auto">Vérifier mon compte</button>
+          </div>
+        <% } %>
+        <% if (user.confirmed == true) { %>
+          <div class="row mt-3">
+            <button onclick="window.location.href='/app/select'" class="btn btn-primary col col-md-5 mx-auto">Sélectionner un Client</button>
+          </div>
+        <% } %>
+        <p class="quote text-center mt-2">Inscrit depuis le
+          <%= date %></p>
+      </div>
+    </div>
+  </div>
+
+  <%- include('./partials/messages'); %>

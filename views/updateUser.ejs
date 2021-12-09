@@ -1,0 +1,129 @@
+<%- include('./partials/navbar'); %>
+
+  <div class="col-md-8 mb-3 mt-2 mt-md-5 mx-auto">
+    <div class="card card-body">
+      <form action="/users/updateUser" method="POST" class="d-none d-md-block updateUserForm">
+        <div class="row">
+          <div class="form-group col">
+            <label for="lname">Nom</label>
+            <input type="lname" id="lastName" name="lastName" class="form-control" placeholder="Nom" value="<%= typeof user.lastName != 'undefined' ? user.lastName : '' %>"/>
+          </div>
+          <div class="form-group col">
+            <label for="fname">Prénom</label>
+            <input type="fname" id="firstName" name="firstName" class="form-control" placeholder="Prénom" value="<%= typeof user.firstName != 'undefined' ? user.firstName : '' %>"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof user.email != 'undefined' ? user.email : '' %>"/>
+          </div>
+          <div class="form-group col">
+            <label for="phone">Téléphone</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Téléphone" minlength="10" maxlength="10" value="<%= typeof user.phone != 'undefined' ? user.phone : '' %>"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="cp">Code Postal</label>
+            <input type="number" id="cp" name="cp" class="form-control" placeholder="Code Postal" minlength="5" maxlength="5" value="<%= typeof user.cp != 'undefined' ? user.cp : '' %>"/>
+          </div>
+          <div class="form-group col">
+            <label for="city">Ville</label>
+            <input type="text" id="city" name="city" class="form-control" placeholder="Ville" value="<%= typeof user.city != 'undefined' ? user.city : '' %>"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Adresse</label>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" value="<%= typeof user.address != 'undefined' ? user.address : '' %>"/>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="formeJuridique">Forme Juridique</label>
+            <input type="text" id="formeJuridique" name="formeJuridique" class="form-control" placeholder="Forme Juridique" value="<%= typeof user.formeJuridique != 'undefined' ? user.formeJuridique : '' %>"/>
+          </div>
+          <div class="form-group col">
+            <label for="raisonSociale">Raison Sociale</label>
+            <input type="text" id="raisonSociale" name="raisonSociale" class="form-control" placeholder="Raison Sociale" value="<%= typeof user.raisonSociale != 'undefined' ? user.raisonSociale : '' %>"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="identifiantTva">Identifiant TVA</label>
+          <input type="text" id="identifiantTva" name="identifiantTva" class="form-control" placeholder="Identifiant TVA" minlength="13" maxlength="13" value="<%= typeof user.identifiantTva != 'undefined' ? user.identifiantTva : '' %>"/>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary mx-1">Valider
+            <i class="fas fa-check ml-1"></i>
+          </button>
+          <button href="/app/dashboard" class="btn btn-primary mx-1">Annuler
+            <i class="fas fa-undo ml-1"></i>
+          </button>
+        </div>
+        <div class="text-center mt-3">
+          <button href="/users/deleteUser" class="btn btn-danger deleteBtn">Supprimer mon compte
+            <i class="fas fa-exclamation-triangle ml-1"></i>
+          </button>
+        </div>
+      </form>
+
+      <form action="/users/updateUser" method="POST" class="d-block d-md-none updateUserForm">
+        <div class="form-group">
+          <label for="lname">Nom</label>
+          <input type="lname" id="lastName" name="lastName" class="form-control" placeholder="Nom" value="<%= typeof user.lastName != 'undefined' ? user.lastName : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="fname">Prénom</label>
+          <input type="fname" id="firstName" name="firstName" class="form-control" placeholder="Prénom" value="<%= typeof user.firstName != 'undefined' ? user.firstName : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof user.email != 'undefined' ? user.email : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="address">Adresse</label>
+          <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" value="<%= typeof user.address != 'undefined' ? user.address : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="cp">Code Postal</label>
+          <input type="number" id="cp" name="cp" class="form-control" placeholder="Code Postal" minlength="5" maxlength="5" value="<%= typeof user.cp != 'undefined' ? user.cp : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="city">Ville</label>
+          <input type="text" id="city" name="city" class="form-control" placeholder="Ville" value="<%= typeof user.city != 'undefined' ? user.city : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone</label>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="Téléphone" minlength="10" maxlength="10" value="<%= typeof user.phone != 'undefined' ? user.phone : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="formeJuridique">Forme Juridique</label>
+          <input type="text" id="formeJuridique" name="formeJuridique" class="form-control" placeholder="Forme Juridique" value="<%= typeof user.formeJuridique != 'undefined' ? user.formeJuridique : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="raisonSociale">Raison Sociale</label>
+          <input type="text" id="raisonSociale" name="raisonSociale" class="form-control" placeholder="Raison Sociale" value="<%= typeof user.raisonSociale != 'undefined' ? user.raisonSociale : '' %>"/>
+        </div>
+        <div class="form-group">
+          <label for="identifiantTva">Identifiant TVA</label>
+          <input type="text" id="identifiantTva" name="identifiantTva" class="form-control" placeholder="Identifiant TVA" minlength="13" maxlength="13" value="<%= typeof user.identifiantTva != 'undefined' ? user.identifiantTva : '' %>"/>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary mx-1">Valider
+            <i class="fas fa-check ml-1"></i>
+          </button>
+          <button href="/app/dashboard" class="btn btn-primary mx-1">Annuler
+            <i class="fas fa-undo ml-1"></i>
+          </button>
+        </div>
+        <div class="text-center mt-3">
+          <button href="/users/deleteUser" class="btn btn-danger deleteBtn">Supprimer mon compte
+            <i class="fas fa-exclamation-triangle ml-1"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <%- include('./partials/messages') %>
+
+    <script src="/js/updateUser.js" charset="utf-8"></script>

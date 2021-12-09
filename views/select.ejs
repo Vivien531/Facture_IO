@@ -1,0 +1,65 @@
+<%- include('./partials/navbar'); %>
+
+  <div class="card col-12 col-lg-9 mx-auto">
+    <div class="card-header">
+      <h5 class="h3 mb-0 text-center">Sélectionner un Client</h5>
+    </div>
+    <div class="card-header py-0">
+      <div class="row">
+        <div class="p-0 m-0">
+          <button class="btn btn-sm btn-outline-primary" type="button" onclick="window.location.href='/app/addClient'" style="height:100%;" data-toggle="tooltip" data-placement="bottom" title="Ajouter un Client">
+            <i class="fas fa-plus-circle px-3 searchIcon"></i>
+          </button>
+        </div>
+        <form class="col" action="/app/selectSearch" method="POST">
+          <div class="form-group mb-0">
+            <div class="input-group input-group-lg input-group-flush">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <span class="fas fa-search"></span>
+                </div>
+              </div>
+              <input type="search" name="selectSearch" value="<%= search != 'any' ? search : '' %>" class="form-control" placeholder="Rechercher">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card-body pb-md-5">
+      <% if (clients.length == 1) { %>
+          <div class="row align-items-center justify-content-center col-12 mt-3">
+            <div class="col ml--2 text-right">
+              <h4 class="mb-0">
+                <a href="/app/client/<%= clients[0].id %>"><%= clients[0].name %></a>
+              </h4>
+              <small><%= clients[0].city %></small>
+            </div>
+            <div class="col text-left">
+              <button type="button" class="btn btn-sm btn-primary selectBtns" onclick="window.location = '/app/createFacture/<%= clients[0].id %>'">Facture</button>
+              <button type="button" class="btn btn-sm btn-primary selectBtns" onclick="window.location = '/app/createDevis/<%= clients[0].id %>'">Devis</button>
+            </div>
+          </div>
+      <% } else { %>
+        <ul class="list-unstyled list-group-flush list my--3" id="selectClients">
+          <% clients.forEach(function(client) { %>
+            <li class="col list-group-item px-md-4">
+              <div class="row align-items-center">
+                <div class="col ml--2">
+                  <h4 class="mb-0">
+                    <a href="/app/client/<%= client.id %>"><%= client.name %></a>
+                  </h4>
+                  <small><%= client.city %></small>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-sm btn-primary selectBtns" onclick="window.location = '/app/createFacture/<%= client.id %>'">Facture</button>
+                  <button type="button" class="btn btn-sm btn-primary selectBtns" onclick="window.location = '/app/createDevis/<%= client.id %>'">Devis</button>
+                </div>
+              </div>
+            </li>
+            <% }) %>
+            </ul>
+          <% } %>
+        </div>
+      </div>
+
+      <%- include('./partials/messages'); %>

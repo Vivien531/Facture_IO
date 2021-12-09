@@ -1,0 +1,81 @@
+<%- include('./partials/navbar'); %>
+
+  <div class="col-md-8 mb-3 mt-2 mt-md-5 mx-auto">
+
+    <div class="card">
+      <div class="card-header bg-transparent">
+        <h4 class="text-uppercase text-center ls-1 py-1 mb-0">Ajouter un Client</h4>
+      </div>
+      <div class="card-body">
+        <form action="/app/addClient" method="POST" class="d-none d-md-block addClientForm">
+          <div class="form-group">
+            <input type="name" id="name" name="name" class="form-control" placeholder="Nom" required="required" value="<%= typeof _client != 'undefined' ? _client.name : '' %>"/>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input type="number" id="cp" name="cp" class="form-control" placeholder="Code Postal" minlength="5" maxlength="5" required="required" value="<%= typeof _client != 'undefined' ? _client.cp : '' %>"/>
+            </div>
+            <div class="form-group col">
+              <input type="text" id="city" name="city" class="form-control" placeholder="Ville" required="required" value="<%= typeof _client != 'undefined' ? _client.city : '' %>"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" required="required" value="<%= typeof _client != 'undefined' ? _client.address : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="text" id="addressBis" name="addressBis" class="form-control" placeholder="Complément d'adresse" value="<%= typeof _client != 'undefined' ? _client.addressBis : '' %>"/>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input type="text" id="phone" name="phone" class="form-control" minlength="10" maxlength="10" placeholder="Téléphone" value="<%= typeof _client != 'undefined' ? _client.phone : '' %>"/>
+            </div>
+            <div class="form-group col">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof _client != 'undefined' ? _client.email : '' %>"/>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <button type="submit" class="btn btn-primary col">Valider
+              <i class="fas fa-check ml-1"></i>
+            </button>
+            <button onclick="window.location.href='/app/dashboard'" class="btn btn-primary col">Annuler
+              <i class="fas fa-undo ml-1"></i>
+            </button>
+          </div>
+        </form>
+        <form action="/app/addClient" method="POST" class="d-block d-md-none addClientForm">
+          <div class="form-group">
+            <input type="name" id="name" name="name" class="form-control" placeholder="Nom" required="required" value="<%= typeof _client != 'undefined' ? _client.name : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="number" id="cp" name="cp" class="form-control" placeholder="Code Postal" minlength="5" maxlength="5" required="required" value="<%= typeof _client != 'undefined' ? _client.cp : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="text" id="city" name="city" class="form-control" placeholder="Ville" required="required" value="<%= typeof _client != 'undefined' ? _client.city : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="text" id="address" name="address" class="form-control" placeholder="Adresse" required="required" value="<%= typeof _client != 'undefined' ? _client.address : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="text" id="addressBis" name="addressBis" class="form-control" placeholder="Complément d'adresse" value="<%= typeof _client != 'undefined' ? _client.addressBis : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="text" id="phone" name="phone" class="form-control" minlength="10" maxlength="10" placeholder="Téléphone" value="<%= typeof _client != 'undefined' ? _client.phone : '' %>"/>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<%= typeof _client != 'undefined' ? _client.email : '' %>"/>
+          </div>
+          <div class="row mt-5">
+            <button type="submit" class="btn btn-primary col">Valider
+              <i class="fas fa-check ml-1"></i>
+            </button>
+            <a onclick="window.location.href='/app/dashboard'" class="btn btn-primary col text-white">Annuler
+              <i class="fas fa-undo ml-1"></i>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <%- include('./partials/messages') %>
+
+    <script src="/js/addClient.js" charset="utf-8"></script>

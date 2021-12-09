@@ -1,0 +1,67 @@
+<%- include('./partials/navbar'); %>
+  <div class="card col-12 col-md-11 mx-auto">
+    <div class="card-body" style="padding-left:0;padding-right:0;">
+      <div class="text-center">
+        <div class="row col-12 col-md-8 mx-auto">
+          <select class="custom-select col" id="prestation">
+            <option value="" disabled="disabled" selected="selected">Sélectionner La Prestation</option>
+            <% prestations.forEach(function(prestation) { %>
+              <option
+                value='{ "_id": "<%= prestation._id %>", "name": "<%= prestation.name %>", "priceHT": "<%= prestation.priceHT %>", "priceTTC": "<%= prestation.priceTTC %>", "tvaValue": "<%= prestation.tvaValue %>", "tvaAmount": "<%= prestation.tvaAmount %>", "tva": "<%= prestation.tva %>"}'><%= prestation.name %></option>
+              <% }) %>
+              </select>
+              <div class="col-3 col-md-auto">
+                <button id="add" class="btn btn-icon btn-primary" type="button">
+                  <span class="btn-inner--icon">
+                    <i class="ni ni-fat-add" style="transform: scale(2);"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <form action="/app/createDevis/<%= _client._id %>" method="POST" id="createDevisForm">
+              <div id="prestations"></div>
+              <div class="table-responsive">
+                <table class="table table-borderless mt-3">
+                  <tbody id="table"></tbody>
+                </table>
+              </div>
+
+              <div class="d-none d-md-flex row col-10 mx-auto">
+                <button class="btn btn-icon btn-primary col" type="submit">
+                  <span class="btn-inner--icon">
+                    <i class="ni ni-check-bold" style="transform: scale(1.6);"></i>
+                  </span>
+                  <span class="btn-inner--text">Valider le devis</span>
+                </button>
+                <button class="btn btn-icon btn-primary col reloadBtn" type="button">
+                  <span class="btn-inner--icon">
+                    <i class="ni ni-fat-remove" style="transform: scale(1.6);"></i>
+                  </span>
+                  <span class="btn-inner--text">Remettre à zéro</span>
+                </button>
+              </div>
+
+              <div class="d-flex d-md-none row col-12 mx-auto">
+                <button class="btn btn-sm btn-icon btn-primary col" type="submit">
+                  <span class="btn-inner--icon">
+                    <i class="ni ni-check-bold" style="transform: scale(1.6);"></i>
+                  </span>
+                  <span class="btn-inner--text">Valider le devis</span>
+                </button>
+                <button class="btn btn-sm btn-icon btn-primary col reloadBtn" type="button">
+                  <span class="btn-inner--icon">
+                    <i class="ni ni-fat-remove" style="transform: scale(1.6);"></i>
+                  </span>
+                  <span class="btn-inner--text">Remettre à zéro</span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <%- include('./partials/messages'); %>
+
+        <script src="/js/createDevis.js" charset="utf-8"></script>

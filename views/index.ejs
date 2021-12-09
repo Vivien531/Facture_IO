@@ -1,0 +1,23 @@
+<%- include('./partials/disconnectedNavbar'); %>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-9 m-auto">
+        <div class="card card-body">
+          <div class="row">
+            <img class="mx-auto mb-3" style="width:60%;" src="/src/logo/logo.svg">
+          </div>
+          <div class="text-center mt-5">
+            <div class="row d-none d-md-flex">
+              <button class="btn btn-primary col" onclick="document.location='/users/login'">Se connecter</button>
+              <button class="btn btn-primary col" onclick="document.location='/users/register'">Créer un compte</button>
+            </div>
+            <div class="row d-flex d-md-none">
+              <button class="btn btn-sm btn-primary col" onclick="document.location='/users/login'">Se connecter</button>
+              <button class="btn btn-sm btn-primary col" onclick="document.location='/users/register'">Créer un compte</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,94 @@
+<%- include('./partials/navbar'); %>
+  <div class="card col-md-8 mx-auto">
+    <div class="card-header bg-transparent">
+      <h4 class="text-uppercase text-center ls-1 mb-0"><%= _client.name %></h4>
+    </div>
+    <div class="card-body">
+      <div class="text-center mt-3">
+        <div class="row mb-3">
+          <div class="col">
+            <p class="lead"><%= _client.cp %>
+              <%= _client.city %></p>
+            <p class="lead"><%= _client.address %></p>
+            <% if (_client.addressBis) { %>
+              <p class="quote"><%= _client.addressBis %></p>
+            <% } %>
+          </div>
+          <div class="col">
+            <% if (_client.phone) { %>
+              <p class="lead"><%= _client.phone %></p>
+            <% } %>
+            <% if (_client.email) { %>
+              <p class="lead"><%= _client.email %></p>
+            <% } %>
+            <p class="quote">Client depuis le
+              <%= date %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-none d-lg-block">
+        <div class="row">
+          <button onclick="window.location.href='/app/createFacture/<%= _client._id %>'" class="btn btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-credit-card"></i>
+            </span>
+            <span class="btn-inner--text">Facturer</span>
+          </button>
+          <button onclick="window.location.href='/app/factures/<%= _client._id %>'" class="btn btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-credit-card"></i>
+            </span>
+            <span class="btn-inner--text">Afficher les Factures</span>
+          </button>
+          <button onclick="window.location.href='/app/createDevis/<%= _client._id %>'" class="btn btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-ruler-pencil"></i>
+            </span>
+            <span class="btn-inner--text">Faire un devis</span>
+          </button>
+          <button onclick="window.location.href='/app/devis/<%= _client._id %>'" class="btn btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-ruler-pencil"></i>
+            </span>
+            <span class="btn-inner--text">Afficher les Devis</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="d-block d-lg-none">
+        <div class="row">
+          <button onclick="window.location.href='/app/createFacture/<%= _client._id %>'" class="btn btn-sm btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-credit-card"></i>
+            </span>
+            <span class="btn-inner--text">Facturer</span>
+          </button>
+          <button onclick="window.location.href='/app/factures/<%= _client._id %>'" class="btn btn-sm btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-credit-card"></i>
+            </span>
+            <span class="btn-inner--text">Afficher Factures</span>
+          </button>
+        </div>
+
+        <div class="row my-2">
+          <button onclick="window.location.href='/app/createDevis/<%= _client._id %>'" class="btn btn-sm btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-ruler-pencil"></i>
+            </span>
+            <span class="btn-inner--text">Faire un devis</span>
+          </button>
+          <button onclick="window.location.href='/app/devis/<%= _client._id %>'" class="btn btn-sm btn-icon btn-primary col">
+            <span class="btn-inner--icon">
+              <i class="ni ni-ruler-pencil"></i>
+            </span>
+            <span class="btn-inner--text">Afficher les Devis</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <%- include('./partials/messages'); %>

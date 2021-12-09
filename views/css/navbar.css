@@ -1,0 +1,24 @@
+/* #navbar_logo {
+  height: 50px;
+}
+
+.nav-item {
+  margin-left: 0.7vw;
+  margin-right: 0.7vw;
+}
+
+.nav-item a {
+  display: inline-block;
+  vertical-align: middle;
+  color: black;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition-property: transform color;
+  transition-duration: 0.2s;
+  transition-delay: 0.05s;
+}
+
+.nav-item a:hover {
+  color: #FF7F46;
+  transform: scale(1.2);
+} */
